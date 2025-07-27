@@ -17,14 +17,14 @@ Option #1 : Run ToME from the build directory
 
 Simply run the commands below.
 
-       $ cmake .
+       $ cmake -DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types" .
        $ make
 
 You should now be able to run
 
-       $ ./src/tome2
+       $ ./src/tome -mgcu
 
-to start ToME.
+to start ToME with the curses (terminal) interface, which avoids GTK issues and respects your terminal's colors and fonts.
 
 This is currently the recommended option.
 
@@ -35,11 +35,13 @@ Option #2: Run ToME from a system install location
 
 Run
 
-        $ cmake -DSYSTEM_INSTALL:BOOL=true .
+        $ cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local -DSYSTEM_INSTALL:BOOL=true -DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types" .
         $ make
-        $ sudo make install
+        $ make install
 
-You can now run ToME from anywhere.
+You can now run ToME from anywhere with:
+
+        $ ~/.local/bin/tome -mgcu
 
 You can also use DESTDIR when installing to a different location
 (useful with e.g. stow or when building distribution packages).

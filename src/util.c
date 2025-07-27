@@ -104,8 +104,6 @@ int	*no_fds = NULL;
 /*
 * Hack -- External functions
 */
-extern struct passwd *getpwuid();
-extern struct passwd *getpwnam();
 
 
 /*
